@@ -25,7 +25,6 @@ export default function TodosWrapper() {
 
     return (
         <>
-            <div className="todos__bg"></div>
             <div className="todos__wrapper">
                 <TodoForm addTodo={addTodo} />
                 {todos.map((todo, index) => (
