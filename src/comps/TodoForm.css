@@ -1,0 +1,28 @@
+.AddTodo form {
+    display: flex;
+    flex-direction: column;
+}
+
+.AddTodo form button {
+    background-color: lightblue;
+    width: fit-content;
+    align-self: center;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.AddTodo input {
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    font-size: 1.2rem;
+    background-color: rgba(20, 20, 20, 0.4);
+    color: #fff;
+}
+
+.AddTodo p {
+    color: #fff;
+    font-size: 20px;
+    margin-bottom: 15px;
+}

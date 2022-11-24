@@ -1,0 +1,50 @@
+.todo {
+    background-color: lightblue;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    gap: 20px;
+}
+
+p {
+    padding: 5px 0;
+    font-size: 1.2rem;
+}
+
+input[type="checkbox"] {
+    accent-color: green;
+    width: 30px;
+    height: 30px;
+}
+
+.todo__delBtn,
+.todo__editBtn {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #f1faee;
+    font-size: 1.1rem;
+}
+
+.todo__delBtn {
+    background-color: #e63946;
+}
+
+.todo__editBtn {
+    background-color:darkgreen;
+}
+
+.todo__Btns {
+    margin-left: auto;
+    display: flex;
+    gap: 10px;
+}
+
+.todo input[type="text"] {
+    font-size: 1.2rem;
+    border-radius: 5px;
+    background-color: aqua;
+    font-family: 'Montserrat', sans-serif;
+}
