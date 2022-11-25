@@ -9,18 +9,24 @@ export default function TodosWrapper() {
     const [todos, setTodos] = useState([])
 
     function addTodo(newTodo) {
-        setTodos([{ 'text': newTodo, 'done': false }, ...todos])
+        setTodos([{ 'text': newTodo, 'isDone': false, 'id': Math.random() }, ...todos])
     }
 
-    const deleteTask = (index) => {
-        const tempTodos = [...todos]
-        tempTodos.splice(index, 1)
-        setTodos(tempTodos)
+    const deleteTask = (id) => {
+        // const tempTodos = [...todos]
+        // tempTodos.splice(index, 1)
+        // setTodos(tempTodos)
+        setTodos(todos.filter((t) => t.id !== id))
     }
 
-    const editTask = (index, inputVal) => {
-        todos[index].text = inputVal
-        setTodos([...todos])
+    const editTask = (id, inputVal) => {
+        // todos[index].text = inputVal
+        // setTodos([...todos])
+        setTodos(todos.map((todo) => todo.id !== id ? todo : { ...todo, text: inputVal }))
+    }
+
+    const toggleTask = (id, bool) => {
+        setTodos(todos.map((todo) => todo.id !== id ? todo : { ...todo, isDone: bool }))
     }
 
     return (
@@ -30,11 +36,12 @@ export default function TodosWrapper() {
                 {todos.map((todo, index) => (
                     <Todo
                         todoText={todo.text}
-                        todoDone={todo.done}
+                        isDone={todo.isDone}
                         deleteTask={deleteTask}
                         editTask={editTask}
-                        key={index}
-                        index={index}
+                        toggleTask={toggleTask}
+                        key={todo.id}
+                        id={todo.id}
                     />
                 ))
                 }
