@@ -46,7 +46,8 @@ export default function Todo({ todoText, isDone, deleteTask, editTask, toggleTas
                         setEditingTask(false)
                     }}>
                         <AiFillSave />
-                    </button>) : (
+                    </button>
+                ) : (
                     <button className="todo__editBtn" onClick={
                         (e) => {
                             setEditingTask(true)
