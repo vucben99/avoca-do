@@ -1,5 +1,6 @@
 .todo {
-    background-color: lightblue;
+    background-color: #add8e697;
+    box-shadow: 0 0 3px rgba(18, 18, 18, 0.551);
     display: flex;
     align-items: center;
     padding: 20px;
@@ -13,9 +14,10 @@ p {
 }
 
 input[type="checkbox"] {
-    accent-color: green;
-    width: 30px;
-    height: 30px;
+    accent-color: #8fb92d;
+    background-color: black;
+    min-width: 30px;
+    min-height: 30px;
 }
 
 .todo__delBtn,
@@ -25,8 +27,8 @@ input[type="checkbox"] {
     height: 30px;
     border-radius: 8px;
     cursor: pointer;
-    color: #f1faee;
     font-size: 1.1rem;
+    color: rgb(205, 205, 205);
 }
 
 .todo__delBtn {
@@ -38,7 +40,7 @@ input[type="checkbox"] {
 }
 
 .todo__saveBtn {
-    background-color: greenyellow;
+    background-color: green;
 }
 
 .todo__Btns {
@@ -53,4 +55,5 @@ input[type="checkbox"] {
     background-color: transparent;
     box-shadow: 0 0 10px 1px;
     font-family: 'Montserrat', sans-serif;
+    max-width: 50%;
 }

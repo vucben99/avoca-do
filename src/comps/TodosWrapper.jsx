@@ -33,7 +33,7 @@ export default function TodosWrapper() {
         <>
             <div className="todos__wrapper">
                 <TodoForm addTodo={addTodo} />
-                {todos.map((todo, index) => (
+                {todos.map((todo) => (
                     <Todo
                         todoText={todo.text}
                         isDone={todo.isDone}

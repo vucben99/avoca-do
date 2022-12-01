@@ -6,27 +6,21 @@
     box-sizing: border-box;
     border: none;
     outline: none;
-}
-
-html {
-    background: url("../assets/bg.jpg");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    overflow-y: scroll;
+    user-select: none;
 }
 
 body {
     font-family: 'Montserrat', sans-serif;
-    /* background-color: #457b9d; */
-    
+    background: url("../assets/bg.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
     height: 100vh;
-    width: 100%;
 }
 
-main {
-    height: 100%;
-    border: solid 2px red;
+#root {
+    height: 100vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }

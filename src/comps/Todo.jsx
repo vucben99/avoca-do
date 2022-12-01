@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './Todo.css'
+import { AiFillDelete, AiFillEdit, AiFillSave } from 'react-icons/ai'
 
 export default function Todo({ todoText, isDone, deleteTask, editTask, toggleTask, id }) {
 
@@ -34,30 +35,28 @@ export default function Todo({ todoText, isDone, deleteTask, editTask, toggleTas
         <div className="todo">
             <input type="checkbox" checked={isDone} onChange={taskDoneHandler} id="task-edit-input" />
 
-            <p style={conditionalStyle}>
-                {editingTask ?
-                    <input type='text' defaultValue={todoText} onKeyPress={inputValHandler} /> :
-                    todoText
-                } {/* magamnak: miért a p-ben van az input? */}
-            </p>
+            {editingTask ?
+                <input type='text' defaultValue={todoText} onKeyPress={inputValHandler} /> :
+                <p style={conditionalStyle}>{todoText}</p>
+            }
+
             <div className="todo__Btns">
                 {editingTask ? (
                     <button className="todo__saveBtn" onClick={() => {
                         setEditingTask(false)
                     }}>
-                        💾
+                        <AiFillSave />
                     </button>) : (
                     <button className="todo__editBtn" onClick={
                         (e) => {
                             setEditingTask(true)
-
                         }
                     }>
-                        🖊
+                        <AiFillEdit />
                     </button>
                 )
                 }
-                <button className="todo__delBtn" onClick={() => deleteTask(id)}>✖</button>
+                <button className="todo__delBtn" onClick={() => deleteTask(id)}><AiFillDelete /></button>
             </div>
         </div>
     )

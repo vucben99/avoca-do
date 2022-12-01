@@ -1,5 +1,6 @@
 .navbar {
-    background-color: #1d3557;
+    background-color: #1d3557eb;
+    backdrop-filter: blur(10px);
     color: #f1faee;
     padding: 10px 5px;
     position: sticky;
@@ -7,4 +8,5 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    z-index: 99;
 }
