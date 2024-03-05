@@ -10,11 +10,13 @@ export default function TodosWrapper() {
 
     useEffect(() => {
         const unparsedTodos = localStorage.getItem('todos')
-        if (unparsedTodos === null) {
+        if (!unparsedTodos) {
             localStorage.setItem('todos', JSON.stringify([]))
+            setTodos([])
+        } else {
+            const parsedTodos = JSON.parse(unparsedTodos)
+            setTodos(parsedTodos)
         }
-        const parsedTodos = JSON.parse(unparsedTodos)
-        setTodos(parsedTodos)
     },[])
 
     useEffect(() => {

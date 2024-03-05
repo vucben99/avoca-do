@@ -1,14 +1,20 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import './Todo.css'
 import { AiFillDelete, AiFillEdit, AiFillSave } from 'react-icons/ai'
 
 export default function Todo({ todoText, isDone, deleteTask, editTask, toggleTask, id }) {
 
-    // const [taskDone, setTaskDone] = useState(isDone)
     const [editingTask, setEditingTask] = useState(false)
 
+    const inputRef = useRef(null)
+
+    useEffect(() => {
+        if (editingTask) {
+            inputRef.current.focus()
+        }
+    }, [editingTask])
+
     const conditionalStyle = (
-        //taskDone ?
         isDone ?
             {
                 textDecoration: "line-through 2px",
@@ -18,8 +24,7 @@ export default function Todo({ todoText, isDone, deleteTask, editTask, toggleTas
             }
     )
 
-    const taskDoneHandler = (e) => {
-        // setTaskDone(e.target.checked)
+    const taskDoneHandler = () => {
         toggleTask(id, !isDone)
     }
 
@@ -28,7 +33,7 @@ export default function Todo({ todoText, isDone, deleteTask, editTask, toggleTas
             const inputVal = e.target.value
             editTask(id, inputVal)
             setEditingTask(!editingTask)
-        } else return
+        }
     }
 
     return (
@@ -36,7 +41,7 @@ export default function Todo({ todoText, isDone, deleteTask, editTask, toggleTas
             <input type="checkbox" checked={isDone} onChange={taskDoneHandler} id="task-edit-input" />
 
             {editingTask ?
-                <input type='text' defaultValue={todoText} onKeyPress={inputValHandler} /> :
+                <input type='text' ref={inputRef} defaultValue={todoText} onKeyUp={inputValHandler} /> :
                 <p style={conditionalStyle}>{todoText}</p>
             }
 
@@ -49,7 +54,7 @@ export default function Todo({ todoText, isDone, deleteTask, editTask, toggleTas
                     </button>
                 ) : (
                     <button className="todo__editBtn" onClick={
-                        (e) => {
+                        () => {
                             setEditingTask(true)
                         }
                     }>
