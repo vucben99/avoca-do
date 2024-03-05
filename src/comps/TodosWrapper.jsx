@@ -1,39 +1,52 @@
 import './TodosWrapper.css'
 import TodoForm from './TodoForm'
 import Todo from './Todo'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 
 export default function TodosWrapper() {
 
     const [todos, setTodos] = useState([])
 
+    useEffect(() => {
+        const unparsedTodos = localStorage.getItem('todos')
+        if (unparsedTodos === null) {
+            localStorage.setItem('todos', JSON.stringify([]))
+        }
+        const parsedTodos = JSON.parse(unparsedTodos)
+        setTodos(parsedTodos)
+    },[])
+
+    useEffect(() => {
+        localStorage.setItem('todos', JSON.stringify(todos))
+    },[todos])
+
+
     function addTodo(newTodo) {
-        setTodos([{ 'text': newTodo, 'isDone': false, 'id': Math.random() }, ...todos])
+        const updatedTodos = [{ 'text': newTodo, 'isDone': false, 'id': Math.random() }, ...todos]
+        setTodos(updatedTodos)
     }
 
     const deleteTask = (id) => {
-        // const tempTodos = [...todos]
-        // tempTodos.splice(index, 1)
-        // setTodos(tempTodos)
-        setTodos(todos.filter((t) => t.id !== id))
+        const updatedTodos = todos.filter((t) => t.id !== id)
+        setTodos(updatedTodos)
     }
 
     const editTask = (id, inputVal) => {
-        // todos[index].text = inputVal
-        // setTodos([...todos])
-        setTodos(todos.map((todo) => todo.id !== id ? todo : { ...todo, text: inputVal }))
+        const updatedTodos = todos.map((todo) => todo.id !== id ? todo : { ...todo, text: inputVal })
+        setTodos(updatedTodos)
     }
 
     const toggleTask = (id, bool) => {
-        setTodos(todos.map((todo) => todo.id !== id ? todo : { ...todo, isDone: bool }))
+        const updatedTodos = todos.map((todo) => todo.id !== id ? todo : { ...todo, isDone: bool })
+        setTodos(updatedTodos)
     }
 
     return (
         <>
             <div className="todos__wrapper">
                 <TodoForm addTodo={addTodo} />
-                {todos.map((todo) => (
+                {todos?.map((todo) => (
                     <Todo
                         todoText={todo.text}
                         isDone={todo.isDone}
