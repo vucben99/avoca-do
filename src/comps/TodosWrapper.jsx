@@ -18,6 +18,9 @@ export default function TodosWrapper() {
     },[])
 
     useEffect(() => {
+        if(!localStorage.getItem('todos')) {
+            localStorage.setItem('todos', JSON.stringify([]))
+        }
         localStorage.setItem('todos', JSON.stringify(todos))
     },[todos])
 
